@@ -28,8 +28,6 @@ def pagina_compras():
         data_select = st.sidebar.date_input('Selecione o período', [start_date, end_date], format='DD/MM/YYYY')
         filtro_categoria = col1.selectbox('Selecione a Categorias', lista_categorias)
 
-    url_compras = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRZzdqgnKHkLJ_7taLdMJtElFZRWucobAJ6CECJlpr6nau19X4s9fsgzNZ9ZRbGj6zvw8zfV5HmXjL_/pub?gid=0&single=true&output=csv'
-
     df_compras = pd.read_csv(db_compras, sep=',')
     df_compras = df_compras.loc[:,['Data da Compra',
                                 'Produto',
