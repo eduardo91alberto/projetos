@@ -27,9 +27,9 @@ def pagina_compras():
         end_date = (start_date.replace(month=start_date.month % 12 + 1, day=1) - timedelta(days=1))
         data_select = st.sidebar.date_input('Selecione o período', [start_date, end_date], format='DD/MM/YYYY')
         filtro_categoria = col1.selectbox('Selecione a Categorias', lista_categorias)
-        
+
     url_compras = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRZzdqgnKHkLJ_7taLdMJtElFZRWucobAJ6CECJlpr6nau19X4s9fsgzNZ9ZRbGj6zvw8zfV5HmXjL_/pub?gid=0&single=true&output=csv'
-    
+
     df_compras = pd.read_csv(url_compras, sep=',')
     df_compras = df_compras.loc[:,['Data da Compra',
                                 'Produto',
@@ -74,13 +74,23 @@ def pagina_compras():
 
     with st.container():
         col1, col2, col3 = st.columns(3)
+
+        col1.markdown('##### Resumo por Categorias')
         col1.dataframe(df_categorias.sort_values(by='Custo Total (R$)', ascending=False), hide_index=True, height=250, width=500)
+        col2.markdown('##### Resumo por SubCategorias')
         col2.dataframe(df_subcategorias.sort_values(by='Custo Total (R$)', ascending=False), hide_index=True, height=250, width=500)
-        col3.dataframe(compra_por_produto, hide_index=True, height=250, width=500)
+        col3.markdown('##### Resumo por Protudos')
+        col3.dataframe(compra_por_produto.sort_values(by='Custo Total (R$)', ascending=False), hide_index=True, height=250, width=500)
 
 # PAGINA DE VENDAS
 def pagina_vendas():
     st.subheader('Analise de Vendas - Point da Massa')
+
+    url_vendas = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRZzdqgnKHkLJ_7taLdMJtElFZRWucobAJ6CECJlpr6nau19X4s9fsgzNZ9ZRbGj6zvw8zfV5HmXjL_/pub?gid=2129777218&single=true&output=csv'
+    
+    df_vendas = pd.read_csv(url_vendas, sep=',')
+    df_vendas
+
 
 
 if pagina == 'Compras':
