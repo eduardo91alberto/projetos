@@ -11,7 +11,7 @@ def pagina_compras():
     st.subheader('Analise de Compras - Point da Massa')
 
     #Planilha "De Para" - Produtos
-    df_para_produto = pd.read_excel('analise.xlsx')
+    df_para_produto = pd.read_csv('produto_categorias.csv', sep=',')
     df_para_produto.rename(columns={
         'De':'Produto',
         'Para':'descricao_prod'
