@@ -27,7 +27,8 @@ def pagina_compras():
         end_date = (start_date.replace(month=start_date.month % 12 + 1, day=1) - timedelta(days=1))
         data_select = st.sidebar.date_input('Selecione o período', [start_date, end_date], format='DD/MM/YYYY')
         filtro_categoria = col1.selectbox('Selecione a Categorias', lista_categorias)
-
+        
+    db_compras = st.screts['db_compras']
     df_compras = pd.read_csv(db_compras, sep=',')
     df_compras = df_compras.loc[:,['Data da Compra',
                                 'Produto',
