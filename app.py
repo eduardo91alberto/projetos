@@ -104,7 +104,7 @@ def pagina_compras():
         variacao_mimxmed = preco_medio / preco_min - 1
 
         col4.metric(label='Preço Médio', 
-                    value=f'R$ {df_produto_filtrado['Custo Unitário (R$)'].mean().round(2):.2f}', 
+                    value=f"R$ {df_produto_filtrado['Custo Unitário (R$)'].mean().round(2):.2f}", 
                     delta=f'{variacao_mimxmed:.2%}')
 
 
@@ -177,7 +177,7 @@ def pagina_vendas():
         
         df_vendas_filtrado = df_filtro_canal()
         
-        col2.metric(label='Venda Total', value=f'R$ {df_vendas_filtrado['Total da Venda (R$)'].sum():,.2f}')
+        col2.metric(label='Venda Total', value=f"R$ {df_vendas_filtrado['Total da Venda (R$)'].sum():,.2f}")
 
     venda_por_canal = df_vendas_filtrado.groupby('Canal de Vendas')['Total da Venda (R$)'].sum().reset_index()
     venda_por_canal.sort_values(by='Total da Venda (R$)', ascending=False, inplace=True)
