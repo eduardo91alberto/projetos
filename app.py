@@ -108,7 +108,6 @@ def pagina_compras():
                     delta=f'{variacao_mimxmed:.2%}')
 
 
-    
     # Grafico Historico de Produtos
     fig_1 = px.line(df_produto_filtrado, x='Data da Compra', y='Custo Unitário (R$)', title='Historico Valor de Compra',
                     markers=True, render_mode='svg', line_shape='spline', text='Custo Unitário (R$)',
@@ -125,7 +124,7 @@ def pagina_compras():
                      df_produto_filtrado['Data da Compra'].max() + timedelta(days=1)]
     )
 
-    fig_1 # GRAGICO - Variação de Preços de Compra
+    st.plotly_chart(fig_1) # GRAGICO - Variação de Preços de Compra
 
 
 
