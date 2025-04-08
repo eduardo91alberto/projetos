@@ -93,7 +93,7 @@ def pagina_compras():
 
     with st.container():
         col1, col2, col3, col4 = st.columns(4)
-        col3.metric(label='Qtd de Compras', value=f'{df_produto_filtrado['Produto'].count():.0f} x')
+        col3.metric(label='Qtd de Compras', value=df_produto_filtrado['Produto'].count())
         col2.metric(label='Volume Comprado', value=df_produto_filtrado['Quantidade'].sum().round(2))
         col1.metric(label='Compra Total', value=f'R$ {df_produto_filtrado['Custo Total (R$)'].sum():.2f}')
 
@@ -189,19 +189,8 @@ def pagina_vendas():
                    width=750,
                    height=350)
     
-    fig_2 = px.pie(venda_por_canal, values='Total da Venda (R$)',
-                   title='Venda Por Canal (%)',
-                   color='Canal de Vendas',
-                   names='Canal de Vendas',
-                   width=400,
-                   height=350)
+    fig_1
     
-    with st.container():
-        col1, col2 = st.columns(2)
-
-        col1.write(fig_1)
-        col2.write(fig_2)
-
 
 
 if pagina == 'Compras':
