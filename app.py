@@ -95,7 +95,9 @@ def pagina_compras():
         col1, col2, col3, col4 = st.columns(4)
         col3.metric(label='Qtd de Compras', value=df_produto_filtrado['Produto'].count())
         col2.metric(label='Volume Comprado', value=df_produto_filtrado['Quantidade'].sum().round(2))
-        col1.metric(label='Compra Total', value=f'R$ {df_produto_filtrado['Custo Total (R$)'].sum():.2f}')
+        
+        valor_compra_format = f'R$ {df_produto_filtrado['Custo Total (R$)'].sum():.2f}'
+        col1.metric(label='Compra Total', value=valor_compra_format)
 
         preco_min = df_produto_filtrado['Custo Unitário (R$)'].min()
         preco_medio = df_produto_filtrado['Custo Unitário (R$)'].mean().round(2)
