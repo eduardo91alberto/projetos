@@ -93,7 +93,7 @@ def pagina_compras():
 
     with st.container():
         col1, col2, col3, col4 = st.columns(4)
-        col3.metric(label='Qtd de Compras', value=f'{df_produto_filtrado['descricao_prod'].count()} x')
+        col3.metric(label='Qtd de Compras', value=f'{df_produto_filtrado['descricao_prod'].count():.0f} x')
         col2.metric(label='Volume Comprado', value=df_produto_filtrado['Quantidade'].sum().round(2))
         col1.metric(label='Compra Total', value=f'R$ {df_produto_filtrado['Custo Total (R$)'].sum():.2f}')
 
